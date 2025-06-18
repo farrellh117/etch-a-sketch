@@ -63,9 +63,8 @@ body {
 }
 
 .canvas-container {
-    width: 500px;
-    height: 500px;
-    margin-top: 20px;
+    width: 600px;
+    height: 600px;
     border: 2px solid #333;
     display: grid;
 }
@@ -75,4 +74,30 @@ body {
     background-color: white;
     width: 100%;
     height: 100%;
+}
+
+/* Masih coba-coba belajar, belum sempurna */
+@media (max-width: 600px) {
+    .content-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-container {
+        order: 2;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .menu-container .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .canvas-container {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 1/1;
+    }
 }
