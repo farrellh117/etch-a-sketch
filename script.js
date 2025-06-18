@@ -1,8 +1,10 @@
+// Ambil DOM untuk membuat grid canvas
 const container = document.querySelector(".canvas-container");
 const pixelDisplay = document.getElementById("pixel");
 const slider = document.getElementById("myRange");
 const gridSize = slider.value;
 
+// Tambah event untuk membuat grid canvas berdasarkan input slider
 slider.addEventListener("input", () => {
     // Ambil nilai baru slider tiap kali digeser
     const newSize = slider.value;
