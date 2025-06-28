@@ -63,41 +63,14 @@ body {
 }
 
 .canvas-container {
+    display: flex;
+    flex-wrap: wrap;
     width: 600px;
     height: 600px;
     border: 2px solid #333;
-    display: grid;
 }
 
 .grid-box {
-    border: 1px solid #ccc;
-    background-color: white;
-    width: 100%;
-    height: 100%;
-}
-
-/* Masih coba-coba belajar, belum sempurna */
-@media (max-width: 600px) {
-    .content-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .menu-container {
-        order: 2;
-        width: 100%;
-        padding: 10px;
-    }
-    
-    .menu-container .btn {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    .canvas-container {
-        order: 1;
-        width: 100%;
-        max-width: 100%;
-        aspect-ratio: 1/1;
-    }
+    flex: 1 1 auto;
+    border: 1px solid #333;
 }
