@@ -2,14 +2,20 @@
 const container = document.getElementsByClassName("canvas-container")[0];
 const slider = document.getElementById("grid-size");
 const pixelDisplay = document.getElementById("pixel");
-const gridSize = slider.value;
 
 // DOM untuk draw
-const drawBtn = document.getElementById("drawBtn");
+const drawing = document.getElementById("drawBtn");
 const colorInput = document.getElementById("favColor");
 const gridBox = document.getElementsByClassName("grid-box");
 
+// DOM untuk erase
+const eraser = document.getElementById("eraserBtn");
+
+// DOM untuk reset
+const reset = document.getElementById("resetBtn");
+
 let isDrawing = false;
+let isDeleting = false;
 
 function createGrid(size) {
     container.innerHTML = "";
@@ -50,13 +56,42 @@ function draw(color) {
     }
 }
 
+function erase() {
+    const boxes = document.getElementsByClassName("grid-box");
+
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener("mousedown", () => {
+            isDeleting = true;
+            boxes[i].style.backgroundColor = "white";
+        })
+
+        boxes[i].addEventListener("mouseover", () => {
+            if (isDeleting === true) {
+                boxes[i].style.backgroundColor = "white";
+            }
+        })
+
+        boxes[i].addEventListener("mouseup", () => {
+            isDeleting = false;
+        })
+    }
+}
+
+function clearAll() {
+    const boxes = document.getElementsByClassName("grid-box");
+
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].style.backgroundColor = "white";
+    }
+}
+
 slider.addEventListener("input", () => {
     const newSize = slider.value;
     pixelDisplay.textContent = newSize;
     createGrid(newSize);
 })
 
-drawBtn.addEventListener("click", () => {
+drawing.addEventListener("click", () => {
     const currentColor = colorInput.value;
     draw(currentColor);
 })
@@ -66,4 +101,11 @@ colorInput.addEventListener("change", () => {
     draw(newColor);
 })
 
-createGrid(gridSize);
+eraser.addEventListener("click", () => {
+    erase();
+})
+
+reset.addEventListener("click", () => {
+    clearAll();
+})
+createGrid(slider.value);
