@@ -108,4 +108,5 @@ eraser.addEventListener("click", () => {
 reset.addEventListener("click", () => {
     clearAll();
 })
+
 createGrid(slider.value);
